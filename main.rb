@@ -1,14 +1,16 @@
-def bubble_sort(arr) 
+def bubble_sort(arr)
     while true
-        swap = false                            
-        for i in arr.length
-            if arr[i]>arr[i+1]                   
+        swap = false
+        i = 0
+        while i < arr.length - 1
+            if arr[i] > arr[i+1]
                 swap = true
                 swap_var = arr[i]
                 arr[i] = arr[i+1]
                 arr[i+1] = swap_var
             end
-        end                                       
+            i += 1
+        end
         if swap == false
             break
         end
@@ -21,4 +23,4 @@ def bubble_sort_by(arr)
 end
 
 
-
+print bubble_sort([4, 7, 2, 8, 5])
