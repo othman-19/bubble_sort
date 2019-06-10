@@ -19,8 +19,32 @@ def bubble_sort(arr)
 end
 
 def bubble_sort_by(arr)
-    yield
+    while true
+      swapped = false
+      index = 0
+      while index < arr.length - 1 do
+        first = arr[index]
+        second = arr[index + 1]
+        swap = yield(first, second)
+        puts "swap value: #{swap}"
+        if swap > 0
+          swap_var = arr[index]
+          arr[index] = arr[index + 1]
+          arr[index + 1] = swap_var
+          swapped = true
+        end
+        index += 1
+      end
+      if swapped == false
+        break
+      end
+    end
+    arr
 end
 
 
 print bubble_sort([4, 7, 2, 8, 5])
+puts "-----"
+print bubble_sort_by(["cat", "goat", "cow", "elephant", "hen"]) { |first, second|
+  first.length - second.length
+}
